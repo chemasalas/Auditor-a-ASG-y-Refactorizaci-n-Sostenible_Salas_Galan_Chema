@@ -41,6 +41,8 @@ No es un caso extremo, pero sí una web más compleja y pesada de lo necesario.
 
 ## Dimensión Social y Equidad
 
+Aqui voy a evaluar a ver si la web es accesible para todas las personas que entren en ella, parea ello utilizare la herramienta 
+
 
 
 
