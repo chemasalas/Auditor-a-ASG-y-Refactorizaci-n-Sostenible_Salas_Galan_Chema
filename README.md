@@ -13,7 +13,7 @@ En este trabajo se realiza una auditoría ASG de la página web de **compramostu
 - **Social (S):** accesibilidad y facilidad de uso para todas las personas.
 - **Gobernanza (G):** privacidad, uso de cookies y tratamiento de datos personales.
 
-Para hacer el análisis he utilizado esta herramienta: **Website Carbon Calculator**
+Para hacer el análisis se han utilizado herramientas como **Website Carbon Calculator**, **WAVE** y las herramientas de desarrollo del navegador.
 
 Por ultimo hago una refactorización con mejoras técnicas para reducir el consumo de recursos, mejorar la accesibilidad y hacer la web más sostenible.
 
@@ -41,7 +41,13 @@ No es un caso extremo, pero sí una web más compleja y pesada de lo necesario.
 
 ## Dimensión Social y Equidad
 
-Aqui voy a evaluar a ver si la web es accesible para todas las personas que entren en ella, parea ello utilizare la herramienta 
+Aqui voy a evaluar a ver si la web es accesible para todas las personas que entren en ella, parea ello utilizare la herramienta WAVE. Vemos que tiene varios problemas para la accebilidad
+
+<img width="766" height="418" alt="image" src="https://github.com/user-attachments/assets/0588eef4-1fe1-4729-ac6a-bf1c52244e71" />
+
+<img width="676" height="295" alt="image" src="https://github.com/user-attachments/assets/8454541e-79c0-4612-863e-9637e98b15fc" />
+
+
 
 
 
