@@ -13,6 +13,25 @@ En este trabajo se realiza una auditoría ASG de la página web de **compramostu
 - **Social (S):** accesibilidad y facilidad de uso para todas las personas.
 - **Gobernanza (G):** privacidad, uso de cookies y tratamiento de datos personales.
 
-Para hacer el análisis se han utilizado herramientas como **Lighthouse**, **Website Carbon Calculator**, **WAVE** y las herramientas de desarrollo del navegador.
+Para hacer el análisis he utilizado esta herramienta: **Website Carbon Calculator**
 
 Por ultimo hago una refactorización con mejoras técnicas para reducir el consumo de recursos, mejorar la accesibilidad y hacer la web más sostenible.
+
+## Inventario y Dimensión Ambiental
+
+Antes de nada he medido la huella de carbono con la herramienta mencionada anteriormente. He medido la pagina web de mi empresa que es https://www.compramostucoche.es/.
+
+<img width="1238" height="682" alt="image" src="https://github.com/user-attachments/assets/e1bd7a80-0fbf-4057-8e99-fa2d7f7a07eb" />
+
+Vemos que no esta mal, pero se podria mejorar bastante. Segun la escala de Carbono esta pagina webb produce 0.209 de carbono
+
+<img width="982" height="316" alt="image" src="https://github.com/user-attachments/assets/abbb584d-e9c1-4d37-8101-e6db92d2af5e" />
+
+
+Ahora veremos los 3 recursos mas pesados de la pagina webb, en inspeccionar y en la parte de network lo vemos claramente
+
+<img width="560" height="838" alt="image" src="https://github.com/user-attachments/assets/b75a31b3-d0f4-449f-941f-b2f1950cec13" />
+
+Lo que mas pesa es Bundles JavaScript dinámico, SVGs e imágenes y Scripts de tracking / analytics
+
+
