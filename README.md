@@ -34,4 +34,13 @@ Ahora veremos los 3 recursos mas pesados de la pagina webb, en inspeccionar y en
 
 Lo que mas pesa es Bundles JavaScript dinámico, SVGs e imágenes y Scripts de tracking / analytics
 
+Sí, la web se ve que señales de “inflación de software”.
+Hace muchas peticiones, carga varios scripts de tracking y recursos JavaScript para una funcionalidad simple. Además, 4.9 MB de recursos es bastante para una web normal.
+
+No es un caso extremo, pero sí una web más compleja y pesada de lo necesario.
+
+## Dimensión Social y Equidad
+
+
+
 
