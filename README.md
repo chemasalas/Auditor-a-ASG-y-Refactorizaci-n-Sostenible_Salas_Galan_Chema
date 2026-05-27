@@ -103,20 +103,20 @@ A continuación se detalla una propuesta técnica de refactorización sostenible
 
 ## Optimizar imágenes
 
-Aunque el fragmento de código no incluye imágenes, la auditoría previa mostró imágenes grandes en formato JPG/PNG.
+Aunque el código no incluye imágenes, lo que vi antes vi imágenes grandes en formato JPG/PNG.
 
 ### Solución
 
 - Convertir imágenes a **WebP** o **AVIF**
 - Añadir `loading="lazy"` para carga diferida
 
-### Ejemplo antes
+### antes
 
 ```html
 <img src="/static/banner.jpg">
 ```
 
-### Ejemplo después
+### después
 
 ```html
 <picture>
@@ -130,7 +130,7 @@ Aunque el fragmento de código no incluye imágenes, la auditoría previa mostr�
 
 # Reducción de peticiones HTTP
 
-El código muestra más de 12 scripts externos, entre ellos:
+El código muestra más de 12 scripts :
 
 - React (production)
 - ReactDOM
@@ -141,9 +141,9 @@ El código muestra más de 12 scripts externos, entre ellos:
 - Scripts de experimentación A/B
 - Scripts de tracking
 
-Esto genera múltiples peticiones, muchas de ellas innecesarias para una página de tasación simple.
+Esto genera múltiples peticiones, muchas innecesarias para una página simple.
 
-## Problemas detectados
+## Problemas que he visto
 
 - React se carga únicamente para el banner de cookies → sobredimensionado
 - Scripts duplicados de GDPR
@@ -152,7 +152,7 @@ Esto genera múltiples peticiones, muchas de ellas innecesarias para una página
 
 ## Soluciones
 
-### ✔ Sustituir React por Web Components o Vanilla JS
+### Sustituir React por Web Components o Vanilla JS
 
 El banner de cookies no requiere React.
 
@@ -180,7 +180,7 @@ El banner de cookies no requiere React.
 
 ---
 
-# 4.3 Eliminación de código no utilizado
+# Eliminación de código no utilizado
 
 El código contiene:
 
@@ -221,7 +221,7 @@ if (gdprPreferences.marketing === true) {
 
 ---
 
-# 4.4 Aplazamiento de scripts (`defer` / `async`)
+# Aplazamiento de scripts 
 
 Muchos scripts se cargan antes del contenido principal, bloqueando el renderizado inicial.
 
@@ -247,11 +247,11 @@ Muchos scripts se cargan antes del contenido principal, bloqueando el renderizad
 
 ---
 
-# 4.5 Mejora social (S)
+# 4.5 Mejora social 
 
 Aunque el código no muestra toda la interfaz visual, se detectan problemas de accesibilidad.
 
-## ✔ Añadir roles ARIA al banner de cookies
+## Añadir roles ARIA al banner de cookies
 
 ### Antes
 
@@ -267,7 +267,7 @@ Aunque el código no muestra toda la interfaz visual, se detectan problemas de a
 
 ---
 
-## ✔ Botones accesibles
+## Botones accesibles
 
 Los botones del banner no incluyen atributos `aria-label`.
 
@@ -287,7 +287,7 @@ Los botones del banner no incluyen atributos `aria-label`.
 
 ---
 
-# 🛡 4.6 Mejora de gobernanza (G)
+# Mejora de gobernanza 
 
 El código evidencia un posible **Dark Pattern**:
 
