@@ -80,9 +80,9 @@ El formulario solicita:
 
 4. Matrícula
 
-Kilometraje
+5. Kilometraje
 
--Código postal
+6. Código postal
 
 *Algunos datos no son estrictamente necesarios para una tasación inicial, por ejemplo:*
 
