@@ -47,6 +47,20 @@ Aqui voy a evaluar a ver si la web es accesible para todas las personas que entr
 
 <img width="676" height="295" alt="image" src="https://github.com/user-attachments/assets/8454541e-79c0-4612-863e-9637e98b15fc" />
 
+El sitio no cumple con los estándares WCAG 2.2 AA, lo que implica una sostenibilidad social deficiente.
+
+La accesibilidad es un componente esencial de la sostenibilidad digital, y su incumplimiento excluye a una parte significativa de la población.
+Principales causas:
+
+Diseño visual centrado en estética comercial, no en inclusión.
+
+-Falta de etiquetas semánticas y atributos accesibles.
+
+-Contrastes y tipografías que no respetan los mínimos de legibilidad.
+
+-Formularios sin estructura accesible ni validación clara.
+
+
 
 
 
