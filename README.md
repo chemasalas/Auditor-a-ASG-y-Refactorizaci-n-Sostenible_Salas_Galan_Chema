@@ -92,6 +92,235 @@ El formulario solicita:
 
 Podrían pedirse solo al final, no en el primer paso.
 
+## Propuesta de Refactorización
+
+La web presenta una gran cantidad de scripts externos, código duplicado, librerías pesadas, tracking redundante y ausencia de optimización de activos.  
+A continuación se detalla una propuesta técnica de refactorización sostenible.
+
+---
+
+# Optimización de activos
+
+## Optimizar imágenes
+
+Aunque el fragmento de código no incluye imágenes, la auditoría previa mostró imágenes grandes en formato JPG/PNG.
+
+### Solución
+
+- Convertir imágenes a **WebP** o **AVIF**
+- Añadir `loading="lazy"` para carga diferida
+
+### Ejemplo antes
+
+```html
+<img src="/static/banner.jpg">
+```
+
+### Ejemplo después
+
+```html
+<picture>
+  <source srcset="/static/banner.avif" type="image/avif">
+  <source srcset="/static/banner.webp" type="image/webp">
+  <img src="/static/banner.jpg" loading="lazy" alt="Tasación de coches">
+</picture>
+```
+
+---
+
+# Reducción de peticiones HTTP
+
+El código muestra más de 12 scripts externos, entre ellos:
+
+- React (production)
+- ReactDOM
+- PropTypes
+- GDPR Banner React
+- Scripts de GTM
+- Librerías GDPR
+- Scripts de experimentación A/B
+- Scripts de tracking
+
+Esto genera múltiples peticiones, muchas de ellas innecesarias para una página de tasación simple.
+
+## Problemas detectados
+
+- React se carga únicamente para el banner de cookies → sobredimensionado
+- Scripts duplicados de GDPR
+- GTM se inyecta dinámicamente varias veces
+- Código minificado muy extenso (más de 500 líneas solo para GDPR)
+
+## Soluciones
+
+### ✔ Sustituir React por Web Components o Vanilla JS
+
+El banner de cookies no requiere React.
+
+**React + ReactDOM ≈ 120 KB innecesarios**
+
+### Antes (React)
+
+```html
+<script src="react.production.min.js"></script>
+<script src="react-dom.production.min.js"></script>
+<script src="gdpr-banner-react.js"></script>
+```
+
+### Después (Vanilla JS)
+
+```html
+<script src="/static/gdpr-banner.js" defer></script>
+```
+
+### Beneficio estimado
+
+- Ahorro de entre **120–150 KB por visita**
+- Menor consumo energético
+- Reducción del tiempo de carga
+
+---
+
+# 4.3 Eliminación de código no utilizado
+
+El código contiene:
+
+- Funciones de A/B testing no utilizadas
+- Scripts de experimentación (`wkdaConfigs`) sin configuración activa
+- Código GDPR duplicado
+- Funciones de tracking que se ejecutan incluso sin consentimiento del usuario
+
+## Ejemplo de código innecesario detectado
+
+```js
+window.wkdaConfigs = [];
+
+// A/B testing logic...
+// Redirect logic...
+// Experiment variants...
+```
+
+## Propuesta
+
+- Eliminar completamente el bloque de experimentación si no está en uso
+- Cargar scripts de marketing solo tras aceptación explícita de cookies
+
+## Implementación recomendada
+
+```js
+if (gdprPreferences.marketing === true) {
+   loadScript('/static/gtm.js');
+}
+```
+
+### Beneficios
+
+- Reducción de JavaScript ejecutado
+- Menor consumo de CPU
+- Disminución del tráfico innecesario
+- Mejora de privacidad y cumplimiento GDPR
+
+---
+
+# 4.4 Aplazamiento de scripts (`defer` / `async`)
+
+Muchos scripts se cargan antes del contenido principal, bloqueando el renderizado inicial.
+
+## Ejemplo antes
+
+```html
+<script src="gdprlib.js"></script>
+<script src="react.production.min.js"></script>
+```
+
+## Ejemplo después
+
+```html
+<script src="gdprlib.js" defer></script>
+<script src="react.production.min.js" defer></script>
+```
+
+## Beneficios
+
+- Reducción del **Total Blocking Time (TBT)**
+- Mejora del **Largest Contentful Paint (LCP)**
+- Renderizado más rápido del contenido principal
+
+---
+
+# 4.5 Mejora social (S)
+
+Aunque el código no muestra toda la interfaz visual, se detectan problemas de accesibilidad.
+
+## ✔ Añadir roles ARIA al banner de cookies
+
+### Antes
+
+```html
+<div id="gdpr-banner-root"></div>
+```
+
+### Después
+
+```html
+<div id="gdpr-banner-root" role="dialog" aria-live="polite"></div>
+```
+
+---
+
+## ✔ Botones accesibles
+
+Los botones del banner no incluyen atributos `aria-label`.
+
+### Solución
+
+```html
+<button aria-label="Aceptar todas las cookies">
+  Aceptar todas
+</button>
+```
+
+## Beneficios
+
+- Mejor experiencia para usuarios con lectores de pantalla
+- Mayor cumplimiento WCAG
+- Mejora de inclusión digital
+
+---
+
+# 🛡 4.6 Mejora de gobernanza (G)
+
+El código evidencia un posible **Dark Pattern**:
+
+- El botón **“Aceptar todas”** está visualmente destacado
+- La opción **“Configuración”** requiere más pasos
+- No existe un botón visible de **“Rechazar todas”**
+
+## Solución: igualdad visual y funcional
+
+### Antes
+
+```js
+"button": "Aceptar todas",
+"secondaryButton": {
+  "default": "Configuración"
+}
+```
+
+### Después
+
+- Botones del mismo tamaño y color
+- Opción **“Rechazar todas”** visible desde el primer nivel
+- Mismo número de clics para aceptar o rechazar cookies
+
+## Beneficios
+
+- Cumplimiento ético y normativo
+- Mejora de transparencia
+- Reducción de prácticas manipulativas
+- Mejor experiencia de usuario
+
+---
+
 
 
 
