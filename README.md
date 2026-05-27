@@ -54,11 +54,11 @@ Principales causas:
 
 Diseño visual centrado en estética comercial, no en inclusión.
 
--Falta de etiquetas semánticas y atributos accesibles.
+1. Falta de etiquetas semánticas y atributos accesibles.
 
--Contrastes y tipografías que no respetan los mínimos de legibilidad.
+2. Contrastes y tipografías que no respetan los mínimos de legibilidad.
 
--Formularios sin estructura accesible ni validación clara.
+3. Formularios sin estructura accesible ni validación clara.
 
 ##  Dimensión de Gobernanza y Ética
 
@@ -84,11 +84,11 @@ El formulario solicita:
 
 -Código postal
 
-Algunos datos no son estrictamente necesarios para una tasación inicial, por ejemplo:
+*Algunos datos no son estrictamente necesarios para una tasación inicial, por ejemplo:*
 
-Nombre
+-Nombre
 
-Email
+-Email
 
 Podrían pedirse solo al final, no en el primer paso.
 
