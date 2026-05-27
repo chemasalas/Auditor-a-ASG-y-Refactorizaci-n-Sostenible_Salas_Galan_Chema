@@ -321,6 +321,17 @@ El código evidencia un posible **Dark Pattern**:
 
 ---
 
+## Comparativa Antes vs Después
+
+| Elemento | Antes | Después |
+|---|---|---|
+| Scripts | 12+ scripts externos | 4 scripts optimizados |
+| React | Sí (120 KB) | Eliminado |
+| GDPR | Código duplicado | Código único y ligero |
+| GTM | Carga automática | Solo si el usuario acepta |
+| Accesibilidad | Sin roles ARIA | Banner accesible |
+| Rendimiento | LCP ~3.8s | LCP ~1.9s |
+
 
 
 
