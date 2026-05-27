@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Tasa y vende coches al mejor precio
+  </title>
+
+  <meta
+    name="description"
+    content="Te ofrecemos una forma fácil y rápida de vender tu coche."
+  >
+
+  <!-- PRECONNECT -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    rel="dns-prefetch"
+    href="https://www.googletagmanager.com"
+  >
+
+  <!-- CRITICAL CSS -->
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #0d4f78;
+      padding: 20px;
+      color: white;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero {
+      padding: 60px 0;
+      text-align: center;
+      background: white;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #e87524;
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+
+    .btn-primary:hover {
+      background: #d06316;
+    }
+
+    .hero-image {
+      margin-top: 40px;
+    }
+
+    /* GDPR */
+
+    #gdpr-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #ddd;
+      padding: 20px;
+      z-index: 9999;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+    }
+
+    .gdpr-modal {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .gdpr-modal h2 {
+      margin-bottom: 10px;
+    }
+
+    .gdpr-modal p {
+      margin-bottom: 20px;
+    }
+
+    .gdpr-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .gdpr-actions button {
+      flex: 1;
+      min-width: 180px;
+      height: 48px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      border-radius: 4px;
+    }
+
+    .accept-btn {
+      background: #0d4f78;
+      color: white;
+    }
+
+    .reject-btn {
+      background: #666;
+      color: white;
+    }
+
+    .config-btn {
+      background: #ddd;
+      color: #222;
+    }
+
+  </style>
+
+  <!-- CSS DIFERIDO -->
+
+  <link
+    rel="preload"
+    href="/static/app.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="/static/app.css"
+    >
+  </noscript>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="container">
+
+      <h2>
+        Compramostucoche.es
+      </h2>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <h1>
+        Tasa y vende tu coche al mejor precio
+      </h1>
+
+      <p>
+        Obtén una valoración online inmediata y vende tu coche rápidamente.
+      </p>
+
+      <a
+        href="#"
+        class="btn-primary"
+      >
+        Tasar coche
+      </a>
+
+      <div class="hero-image">
+
+        <picture>
+
+          <source
+            srcset="/static/car-banner.avif"
+            type="image/avif"
+          >
+
+          <source
+            srcset="/static/car-banner.webp"
+            type="image/webp"
+          >
+
+          <img
+            src="/static/car-banner.jpg"
+            alt="Tasación de coches"
+            width="1200"
+            height="600"
+            loading="lazy"
+            decoding="async"
+            style="max-width:100%;height:auto;"
+          >
+
+        </picture>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GDPR BANNER -->
+
+  <div
+    id="gdpr-banner"
+    role="dialog"
+    aria-live="polite"
+    aria-labelledby="gdpr-title"
+  >
+  </div>
+
+  <!-- GDPR VANILLA JS -->
+
+  <script defer>
+
+    (function () {
+
+      const STORAGE_KEY = 'gdpr_preferences';
+
+      function savePreferences(preferences) {
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(preferences)
+        );
+      }
+
+      function loadScript(src) {
+
+        const script = document.createElement('script');
+
+        script.src = src;
+
+        script.defer = true;
+
+        document.body.appendChild(script);
+      }
+
+      function enableTracking(preferences) {
+
+        if (preferences.analytics === true) {
+
+          loadScript('/static/analytics.js');
+        }
+
+        if (preferences.marketing === true) {
+
+          loadScript('/static/gtm.js');
+        }
+      }
+
+      function closeBanner() {
+
+        const banner =
+          document.getElementById('gdpr-banner');
+
+        if (banner) {
+          banner.remove();
+        }
+      }
+
+      function acceptAll() {
+
+        const preferences = {
+          essential: true,
+          analytics: true,
+          marketing: true
+        };
+
+        savePreferences(preferences);
+
+        enableTracking(preferences);
+
+        closeBanner();
+      }
+
+      function rejectAll() {
+
+        const preferences = {
+          essential: true,
+          analytics: false,
+          marketing: false
+        };
+
+        savePreferences(preferences);
+
+        closeBanner();
+      }
+
+      function configureCookies() {
+
+        alert(
+          'Aquí abrirías el panel avanzado de configuración.'
+        );
+      }
+
+      function renderBanner() {
+
+        const container =
+          document.getElementById('gdpr-banner');
+
+        if (!container) return;
+
+        container.innerHTML = `
+
+          <div class="gdpr-modal">
+
+            <h2 id="gdpr-title">
+              Usamos cookies
+            </h2>
+
+            <p>
+              Utilizamos cookies para mejorar la experiencia,
+              analizar tráfico y mostrar publicidad personalizada.
+            </p>
+
+            <div class="gdpr-actions">
+
+              <button
+                id="accept-cookies"
+                class="accept-btn"
+                aria-label="Aceptar todas las cookies"
+              >
+                Aceptar todas
+              </button>
+
+              <button
+                id="reject-cookies"
+                class="reject-btn"
+                aria-label="Rechazar todas las cookies"
+              >
+                Rechazar todas
+              </button>
+
+              <button
+                id="configure-cookies"
+                class="config-btn"
+                aria-label="Configurar cookies"
+              >
+                Configuración
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+        document
+          .getElementById('accept-cookies')
+          .addEventListener('click', acceptAll);
+
+        document
+          .getElementById('reject-cookies')
+          .addEventListener('click', rejectAll);
+
+        document
+          .getElementById('configure-cookies')
+          .addEventListener('click', configureCookies);
+      }
+
+      const existingPreferences =
+        localStorage.getItem(STORAGE_KEY);
+
+      if (!existingPreferences) {
+
+        renderBanner();
+
+      } else {
+
+        const preferences =
+          JSON.parse(existingPreferences);
+
+        enableTracking(preferences);
+      }
+
+    })();
+
+  </script>
+
+  <!-- GTM SOLO SI HAY CONSENTIMIENTO -->
+
+  <script defer>
+
+    (function () {
+
+      const preferences =
+        JSON.parse(
+          localStorage.getItem('gdpr_preferences')
+        );
+
+      if (
+        preferences &&
+        preferences.marketing === true
+      ) {
+
+        if (window.gtmLoaded === true) {
+          return;
+        }
+
+        window.gtmLoaded = true;
+
+        window.dataLayer =
+          window.dataLayer || [];
+
+        const script =
+          document.createElement('script');
+
+        script.async = true;
+
+        script.src =
+          'https://www.googletagmanager.com/gtm.js?id=GTM-XXXX';
+
+        document.head.appendChild(script);
+      }
+
+    })();
+
+  </script>
+
+</body>
+
+</html>
