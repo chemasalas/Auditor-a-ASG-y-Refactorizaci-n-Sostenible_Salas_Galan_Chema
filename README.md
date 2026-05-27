@@ -72,15 +72,15 @@ Esto constituye un Dark Pattern de tipo obstrucción.
 
 El formulario solicita:
 
--Nombre
+1. Nombre
 
--Email
+2. Email
 
--Teléfono
+3. Teléfono
 
--Matrícula
+4. Matrícula
 
--Kilometraje
+Kilometraje
 
 -Código postal
 
