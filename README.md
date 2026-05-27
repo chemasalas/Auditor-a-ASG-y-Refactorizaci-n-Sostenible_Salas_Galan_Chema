@@ -60,6 +60,38 @@ Diseño visual centrado en estética comercial, no en inclusión.
 
 -Formularios sin estructura accesible ni validación clara.
 
+##  Dimensión de Gobernanza y Ética
+
+### Transparencia en cookies
+El banner de cookies, prioriza el botón “Aceptar todo” en color destacado.
+El botón “Configurar” está menos visible.
+Requiere varios clics para rechazar cookies no esenciales.
+Esto constituye un Dark Pattern de tipo obstrucción.
+
+### Datos innecesarios
+
+El formulario solicita:
+
+-Nombre
+
+-Email
+
+-Teléfono
+
+-Matrícula
+
+-Kilometraje
+
+-Código postal
+
+Algunos datos no son estrictamente necesarios para una tasación inicial, por ejemplo:
+
+Nombre
+
+Email
+
+Podrían pedirse solo al final, no en el primer paso.
+
 
 
 
